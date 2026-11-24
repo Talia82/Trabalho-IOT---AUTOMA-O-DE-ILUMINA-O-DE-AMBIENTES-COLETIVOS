@@ -1,0 +1,18 @@
+{
+  "sala_id": "sala-101",
+  "bloco": "predioA",
+  "dispositivo_id": "esp32-ilum-01",
+  "sensores": {
+    "presenca": 1,
+    "luminosidade": 345,
+    "unidade_lux": "lux"
+  },
+  "atuadores": {
+    "rele_lampada": "LIGADA",
+    "modo_operacao": "AUTOMATICO"
+  },
+  "status_rede": {
+    "ip": "10.0.0.42",
+    "rssi_dbm": -65
+  }
+}

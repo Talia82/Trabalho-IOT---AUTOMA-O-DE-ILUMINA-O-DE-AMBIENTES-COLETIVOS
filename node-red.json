@@ -1,0 +1,509 @@
+[
+    {
+        "id": "0254a884076e699d",
+        "type": "tab",
+        "label": "Iluminação Sala 101",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "mqtt_broker_hivemq",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Broker",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "nodered-sala101-ads",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "ui_tab_dashboard",
+        "type": "ui_tab",
+        "name": "Automação Sala de Aula",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ui_group_indicadores",
+        "type": "ui_group",
+        "name": "Status em Tempo Real",
+        "tab": "ui_tab_dashboard",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ui_group_graficos",
+        "type": "ui_group",
+        "name": "Histórico de Luminosidade",
+        "tab": "ui_tab_dashboard",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ui_group_controles",
+        "type": "ui_group",
+        "name": "Controle Remoto & Automação",
+        "tab": "ui_tab_dashboard",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2412e71f1384e8c7",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "aa9ffcb9950f09df",
+        "type": "mqtt in",
+        "z": "0254a884076e699d",
+        "name": "Recebe Telemetria ESP32",
+        "topic": "universidade/predioA/sala101/dados",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "mqtt_broker_hivemq",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "4d625fafe7e5c800",
+                "958b79aa762423a3",
+                "87026aab0cadb1a5",
+                "99461a35b8c47112"
+            ]
+        ]
+    },
+    {
+        "id": "4d625fafe7e5c800",
+        "type": "debug",
+        "z": "0254a884076e699d",
+        "name": "Console Telemetria",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "958b79aa762423a3",
+        "type": "function",
+        "z": "0254a884076e699d",
+        "name": "Separar Métricas",
+        "func": "var dados = msg.payload;\n\n// 1. Mensagem para o Gráfico de Luminosidade\nvar msgLux = { payload: dados.luminosidade, topic: 'Luminosidade (ADC)' };\n\n// 2. Mensagem para o Indicador de Ocupação/Presença\nvar statusPresenca = dados.presenca === 1 ? 'Ocupada (Movimento)' : 'Vazia (Sem Presença)';\nvar msgPresenca = { payload: statusPresenca };\n\n// 3. Mensagem para o Indicador da Lâmpada\nvar msgLampada = { payload: dados.rele_lampada };\n\nreturn [msgLux, msgPresenca, msgLampada];",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "cddc2c2aeae1b5e8",
+                "101f6f691ac99f61"
+            ],
+            [
+                "0c0aa342a2869004"
+            ],
+            [
+                "a406958d52dc8c17"
+            ]
+        ]
+    },
+    {
+        "id": "cddc2c2aeae1b5e8",
+        "type": "ui_chart",
+        "z": "0254a884076e699d",
+        "name": "Histórico Luminosidade",
+        "group": "ui_group_graficos",
+        "order": 1,
+        "width": "8",
+        "height": "6",
+        "label": "Luminosidade Ambiente (Histórico Recente)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Aguardando leituras do ESP32...",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "4095",
+        "removeOlder": "30",
+        "removeOlderPoints": "50",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 690,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "101f6f691ac99f61",
+        "type": "ui_gauge",
+        "z": "0254a884076e699d",
+        "name": "Gauge Luz",
+        "group": "ui_group_indicadores",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Nível de Luminosidade",
+        "label": "unidades",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "4095",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#52c41a"
+        ],
+        "seg1": "1000",
+        "seg2": "2500",
+        "diff": false,
+        "className": "",
+        "x": 650,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0c0aa342a2869004",
+        "type": "ui_text",
+        "z": "0254a884076e699d",
+        "group": "ui_group_indicadores",
+        "order": 2,
+        "width": "6",
+        "height": "2",
+        "name": "Indicador Presença",
+        "label": "Ocupação da Sala:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 670,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a406958d52dc8c17",
+        "type": "ui_text",
+        "z": "0254a884076e699d",
+        "group": "ui_group_indicadores",
+        "order": 3,
+        "width": "6",
+        "height": "2",
+        "name": "Status Lâmpada",
+        "label": "Circuito de Iluminação:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 660,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "87026aab0cadb1a5",
+        "type": "function",
+        "z": "0254a884076e699d",
+        "name": "Formatar Linha CSV",
+        "func": "var dados = msg.payload;\nvar agora = new Date().toISOString();\n\n// Garante o cabeçalho se o contexto estiver vazio\nvar leituras = flow.get('total_leituras') || 0;\nleituras++;\nflow.set('total_leituras', leituras);\n\n// Formato: timestamp, sala_id, presenca, luminosidade, rele_lampada, modo, contador\nvar linha = agora + ',' + \n            dados.sala_id + ',' + \n            dados.presenca + ',' + \n            dados.luminosidade + ',' + \n            dados.rele_lampada + ',' + \n            dados.modo + ',' + \n            leituras + '\\n';\n\nmsg.payload = linha;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 420,
+        "wires": [
+            [
+                "5285fcec6cc472fc"
+            ]
+        ]
+    },
+    {
+        "id": "5285fcec6cc472fc",
+        "type": "file",
+        "z": "0254a884076e699d",
+        "name": "Salvar leituras.csv",
+        "filename": "leituras_sala101.csv",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 670,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99461a35b8c47112",
+        "type": "function",
+        "z": "0254a884076e699d",
+        "name": "Regra Nuvem (Apoio à Decisão)",
+        "func": "// Regra de Apoio e Alerta Automatizado em Nuvem:\n// Se a sala estiver desocupada por leituras seguidas e a lâmpada acusar LIGADA (falha de hardware),\n// ou se for detectada anomalia, a nuvem envia um comando forçado de desligamento.\n\nvar dados = msg.payload;\n\nif (dados.presenca === 0 && dados.rele_lampada === 'LIGADA') {\n    node.warn('ALERTA NUVEM: Lâmpada ligada sem ocupação detectada! Enviando desligamento forçado.');\n    return { payload: JSON.stringify({ acao: 'OFF', motivo: 'automacao_nuvem_desperdicio' }) };\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 500,
+        "wires": [
+            [
+                "2b7bd0aa9d8248a7"
+            ]
+        ]
+    },
+    {
+        "id": "af21ff8ef010aabe",
+        "type": "ui_button",
+        "z": "0254a884076e699d",
+        "name": "Botão Ligar Manual",
+        "group": "ui_group_controles",
+        "order": 1,
+        "width": "3",
+        "height": "2",
+        "passthru": false,
+        "label": "LIGAR LUZ",
+        "tooltip": "Comando remoto para forçar acendimento",
+        "color": "",
+        "bgcolor": "#52c41a",
+        "className": "",
+        "icon": "fa-lightbulb-o",
+        "payload": "{\"acao\": \"ON\", \"origem\": \"dashboard_manual\"}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "2b7bd0aa9d8248a7"
+            ]
+        ]
+    },
+    {
+        "id": "a56e5d6eaad52ed0",
+        "type": "ui_button",
+        "z": "0254a884076e699d",
+        "name": "Botão Desligar Manual",
+        "group": "ui_group_controles",
+        "order": 2,
+        "width": "3",
+        "height": "2",
+        "passthru": false,
+        "label": "APAGAR LUZ",
+        "tooltip": "Comando remoto para forçar desligamento",
+        "color": "",
+        "bgcolor": "#ca3838",
+        "className": "",
+        "icon": "fa-power-off",
+        "payload": "{\"acao\": \"OFF\", \"origem\": \"dashboard_manual\"}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 180,
+        "y": 640,
+        "wires": [
+            [
+                "2b7bd0aa9d8248a7"
+            ]
+        ]
+    },
+    {
+        "id": "3749e6f8fdf39efe",
+        "type": "ui_button",
+        "z": "0254a884076e699d",
+        "name": "Botão Retomar Auto",
+        "group": "ui_group_controles",
+        "order": 3,
+        "width": "6",
+        "height": "2",
+        "passthru": false,
+        "label": "MODO AUTOMÁTICO",
+        "tooltip": "Devolve o controle para os sensores LDR e PIR",
+        "color": "",
+        "bgcolor": "#1890ff",
+        "className": "",
+        "icon": "fa-refresh",
+        "payload": "{\"acao\": \"AUTO\", \"origem\": \"dashboard_manual\"}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 700,
+        "wires": [
+            [
+                "2b7bd0aa9d8248a7"
+            ]
+        ]
+    },
+    {
+        "id": "2b7bd0aa9d8248a7",
+        "type": "mqtt out",
+        "z": "0254a884076e699d",
+        "name": "Envia Comando ESP32",
+        "topic": "universidade/predioA/sala101/comando",
+        "qos": "1",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker_hivemq",
+        "x": 700,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "4b949d0d2971a2a7",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
